@@ -19,6 +19,7 @@
 - has_many :contract_historys,dependent: :destroy
 
 
+
 ## itemsテーブル
 
 |Column         |Type     |Options                           |
