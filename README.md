@@ -17,7 +17,7 @@
 ### Association
 - has_many :items,dependent: :destroy
 - has_many :contract_history,dependent: :destroy
-- has_one :address, dependent: :destroy
+- has_one :contract_history, dependent: :destroy
 
 
 ## itemsテーブル
@@ -27,18 +27,16 @@
 |name           |String   |null: false                       |
 |status         |String   |null: false                       |
 |price          |Integer  |null: false                       |
-|brand          |String   |null: false                       |
+|brand_id       |Integer  |null: false                       |
 |category_id    |Integer  |null: false                       |
 |text           |Text     |null: false                       |
 |judgement_id   |Integer  |null: false                       |
 |days_id        |Integer  |null: false                       |
-|prefecture     |String   |null: false                       |
+|prefecture_id  |Integer  |null: false                       |
 |user           |reference|null: false, foreign_key: true    |
 
 ### Association
 - belongs_to :user
-- has_many :images, dependent: :destroy
-- has_one :contract_history, dependent: :destroy
 
 
 
@@ -46,16 +44,14 @@
 
 |Column          |Type     |Options                           |
 |----------------|---------|----------------------------------|
-|prefecture      |String   |null: false                       |
+|prefecture_id   |Integer  |null: false                       |
 |municipality    |String   |null: false                       |
 |postal_code     |String   |null: false                       |
 |address         |String   |null: false                       |
 |building_name   |String   |                                  |
 |phone_number    |Integer  |null: false                       |
-|user            |Integer  |null: false, foreign_key: true    |
 
 ### Association
-- belongs_to :user
 - has_one :contract_history
 
 
@@ -64,13 +60,11 @@
 
 |Column   |Type     |Options                           |
 |---------|---------|----------------------------------|
-|item     |Reference|null: false, foreign_key: true    |
-|address  |Reference|null: false, foreign_key: true    |
+|item     |reference|null: false, foreign_key: true    |
+|user     |reference|null: false, foreign_key: true    |
 
 ### Association
 - belongs_to :item
-- belongs_to :address
-
-
+- belongs_to :user
 
 
