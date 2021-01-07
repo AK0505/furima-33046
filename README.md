@@ -16,8 +16,7 @@
 
 ### Association
 - has_many :items,dependent: :destroy
-- has_many :contract_history,dependent: :destroy
-- has_one :contract_history, dependent: :destroy
+- has_many :contract_historys,dependent: :destroy
 
 
 ## itemsテーブル
@@ -25,9 +24,8 @@
 |Column         |Type     |Options                           |
 |---------------|---------|----------------------------------|
 |name           |String   |null: false                       |
-|status         |String   |null: false                       |
+|status_id      |Integer  |null: false                       |
 |price          |Integer  |null: false                       |
-|brand_id       |Integer  |null: false                       |
 |category_id    |Integer  |null: false                       |
 |text           |Text     |null: false                       |
 |judgement_id   |Integer  |null: false                       |
@@ -52,7 +50,7 @@
 |phone_number    |Integer  |null: false                       |
 
 ### Association
-- has_one :contract_history
+- belongs_to :contract_history
 
 
 
@@ -66,5 +64,6 @@
 ### Association
 - belongs_to :item
 - belongs_to :user
+- has_one :address
 
 
