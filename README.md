@@ -3,15 +3,16 @@
 
 
 ## userテーブル
-|Column             |Type  |Options    |
-|-------------------|------|-----------|
-|nickname           |String|null: false|
-|email              |String|null: false|
-|encrypted_password |String|null: false|
-|first_name         |String|null: false|
-|last_name          |String|null: false|
-|first_name_kana    |String|null: false|
-|last_name_kana     |String|null: false|
+|Column             |Type  |Options               |
+|-------------------|------|----------------------|
+|nickname           |String |null: false          |
+|email              |String |null: false, NOT NULL|
+|encrypted_password |String |null: false          |
+|first_name         |String |null: false          |
+|last_name          |String |null: false          |
+|first_name_kana    |String |null: false          |
+|last_name_kana     |String |null: false          |
+|birthday           |String |null: false          |
 
 
 ### Association
@@ -36,19 +37,21 @@
 
 ### Association
 - belongs_to :user
+- has_one :contract_history
 
 
 
 ## addressテーブル
 
-|Column          |Type     |Options                           |
-|----------------|---------|----------------------------------|
-|prefecture_id   |Integer  |null: false                       |
-|municipality    |String   |null: false                       |
-|postal_code     |String   |null: false                       |
-|address         |String   |null: false                       |
-|building_name   |String   |                                  |
-|phone_number    |Integer  |null: false                       |
+|Column              |Type      |Options                           |
+|--------------------|----------|----------------------------------|
+|prefecture_id       |Integer   |null: false                       |
+|municipality        |String    |null: false                       |
+|postal_code         |String    |null: false                       |
+|address             |String    |null: false                       |
+|building_name       |String    |                                  |
+|phone_number        |String    |null: false                       |
+|contract_history    |reference |null: false, foreign_key: true    |
 
 ### Association
 - belongs_to :contract_history
@@ -61,6 +64,7 @@
 |---------|---------|----------------------------------|
 |item     |reference|null: false, foreign_key: true    |
 |user     |reference|null: false, foreign_key: true    |
+|address  |reference|null: false, foreign_key: true    |
 
 ### Association
 - belongs_to :item
