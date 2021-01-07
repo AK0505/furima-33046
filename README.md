@@ -17,7 +17,6 @@
 ### Association
 - has_many :items,dependent: :destroy
 - has_many :contract_history,dependent: :destroy
-- has_one :contract_history, dependent: :destroy
 
 
 ## itemsテーブル
