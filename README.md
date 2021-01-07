@@ -3,16 +3,16 @@
 
 
 ## userテーブル
-|Column             |Type  |Options               |
-|-------------------|------|----------------------|
-|nickname           |String |null: false          |
-|email              |String |null: false, NOT NULL|
-|encrypted_password |String |null: false          |
-|first_name         |String |null: false          |
-|last_name          |String |null: false          |
-|first_name_kana    |String |null: false          |
-|last_name_kana     |String |null: false          |
-|birthday           |String |null: false          |
+|Column             |Type  |Options                   |
+|-------------------|------|--------------------------|
+|nickname           |String |null: false              |
+|email              |String |null: false, unique: true|
+|encrypted_password |String |null: false              |
+|first_name         |String |null: false              |
+|last_name          |String |null: false              |
+|first_name_kana    |String |null: false              |
+|last_name_kana     |String |null: false              |
+|birthday           |date   |null: false              |
 
 
 ### Association
@@ -64,7 +64,7 @@
 |---------|---------|----------------------------------|
 |item     |reference|null: false, foreign_key: true    |
 |user     |reference|null: false, foreign_key: true    |
-|address  |reference|null: false, foreign_key: true    |
+
 
 ### Association
 - belongs_to :item
