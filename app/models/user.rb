@@ -6,33 +6,27 @@ class User < ApplicationRecord
 
          
 
-         validates :nickname, presence: true
-
          
+         with_options presence: true do
+          validates :nickname
+          validates :password, format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i}
+          # パスワードは半角英小文字・数字それぞれ１文字以上含むでないと登録できない
 
+          validates :password
+          # パスワード確認用
 
-         validates :password, presence: true,
-          format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i}
-         # パスワードは半角英小文字・数字それぞれ１文字以上含むでないと登録できない
+          validates :first_name,format: { with: /\A[ぁ-んァ-ン一-龥]/  }
+          # 全角ひらがな、全角カタカナ、漢字
 
-         validates :password, confirmation: true
-         # パスワード確認用
+          validates :last_name,format: {with: /\A[ぁ-んァ-ン一-龥]/  }
+          # 全角ひらがな、全角カタカナ、漢字
 
-         validates :first_name, presence: true,
-          format: { with: /\A[ぁ-んァ-ン一-龥]/  }
-         # 全角ひらがな、全角カタカナ、漢字
-
-         validates :last_name, presence: true,
-         format: {with: /\A[ぁ-んァ-ン一-龥]/  }
-         # 全角ひらがな、全角カタカナ、漢字
-
-         validates :first_name_kana, presence: true,
-         format: { with: /\A[ア-ン゛゜ァ-ォャ-ョー「」、]+\z/ }
-         #  全角カタカナ
-
-         validates :last_name_kana, presence: true,
-          format: { with: /\A[ア-ン゛゜ァ-ォャ-ョー「」、]+\z/ }
+          validates :first_name_kana,format: { with: /\A[ア-ン゛゜ァ-ォャ-ョー「」、]+\z/ }
           #  全角カタカナ
 
-         validates :birthday, presence: true
+          validates :last_name_kana, format: { with: /\A[ア-ン゛゜ァ-ォャ-ョー「」、]+\z/ }
+            #  全角カタカナ
+
+          validates :birthday
+         end
 end
