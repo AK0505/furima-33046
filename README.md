@@ -31,7 +31,7 @@
 |category_id    |Integer  |null: false                       |
 |text           |Text     |null: false                       |
 |judgement_id   |Integer  |null: false                       |
-|day_id        |Integer  |null: false                       |
+|day_id         |Integer  |null: false                       |
 |prefecture_id  |Integer  |null: false                       |
 |user           |reference|null: false, foreign_key: true    |
 
