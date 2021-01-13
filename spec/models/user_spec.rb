@@ -104,9 +104,7 @@ RSpec.describe User, type: :model do
           end
 
           it "first_nameは漢字、ひらがな、カタカナ以外の場合は登録できないこと" do
-            @user.fir
-            
-            st_name = "yamada"
+            @user.first_name = "yamada"
             @user.valid?
             expect(@user.errors.full_messages).to include("First name is invalid")
           end
