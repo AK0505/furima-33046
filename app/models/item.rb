@@ -13,8 +13,9 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :text
-    validates :price,     format: {with: /\A[0-9]+\z/ }
     validates :name
+    validates :price,     format: {with: /\A[0-9]+\z/ }, inclusion: {in: 300..9999999 } 
+        
   end
 
   validates :prefecture_id,      numericality: { other_than: 0 }
