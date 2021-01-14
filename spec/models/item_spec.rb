@@ -67,6 +67,12 @@ RSpec.describe Item, type: :model do
     expect(@item.errors.full_messages).to include("Price can't be blank")
   end
 
+  it '販売価格のの入力が半角数字でなければ登録できない'do
+    @item.price = "５００"
+    @item.valid?
+    # expect(@item.errors.full_messages).to include("Price is not included in the list")
+  end
+
   it '販売価格が300円以下なら登録できない'do
     @item.price = 200
     @item.valid?
