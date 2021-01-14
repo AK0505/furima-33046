@@ -8,11 +8,13 @@ class Item < ApplicationRecord
   belongs_to_active_hash :day
   belongs_to_active_hash :status
   belongs_to_active_hash :judgement
+  belongs_to_active_hash :category
 
 
 
   with_options presence: true do
     validates :text
+    validates :image
     validates :name
     validates :price,     format: {with: /\A[0-9]+\z/ }, inclusion: {in: 300..9999999 } 
         
@@ -22,4 +24,5 @@ class Item < ApplicationRecord
   validates :day_id,             numericality: { other_than: 0 }
   validates :status_id,          numericality: { other_than: 0 }
   validates :judgement_id,       numericality: { other_than: 0 }
+  validates :category_id,        numericality: { other_than: 0 }
 end
