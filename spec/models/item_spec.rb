@@ -4,7 +4,7 @@ RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
   end
-  
+
   describe '商品登録' do
     # 正常系
     context '商品を登録できるとき' do
@@ -78,13 +78,13 @@ RSpec.describe Item, type: :model do
       end
 
       it '販売価格が300円以下なら登録できない'do
-        @item.price = 200
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
 
       it '販売価格が9999999以上なら登録できない'do
-        @item.price = 99999999
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
