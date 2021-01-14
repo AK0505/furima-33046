@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
  
-  root to: 'furima#index'
+  root to: 'items#index'
   devise_for :users
+  resources :items, only: [:index, :new, :create, :edit]
 
 end
