@@ -12,7 +12,7 @@ function price(){
         addTaxPrice.innerHTML = tax ;
         profitPrice.innerHTML = Math.ceil(inputValue * 0.9).toLocaleString();
     })
-  }
+   }
 };
 
 
