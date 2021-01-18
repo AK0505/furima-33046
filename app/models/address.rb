@@ -1,5 +1,7 @@
 class Address < ApplicationRecord
 
+  belongs_to :contract_history
+  
   with_options presence: true do
     
     validates :municipality #市区町村
