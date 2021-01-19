@@ -1,14 +1,17 @@
 class AddressController < ApplicationController
   def index
+    @item = Item.find(params[:id])
   end
 
   def new
-    @address = Address.new
+    
+    @user_address = UserAddress.new
   end
 
   def create
-    @address = Address.new(address_params)
-    if @address.save
+    @user_address = UserAddress.new(address_params)
+    if @user_address.valid? 
+       @user_address.save
       redirect_to :index
     else
       render :index
@@ -18,6 +21,6 @@ class AddressController < ApplicationController
   private
 
     def address_params 
-      params.require(:address).permit(:municipality, :postal_code, :address, :phone_number, :prefecture_id)
+      params.permit(:municipality, :postal_code, :address, :phone_number, :prefecture_id, :building_name, :item_id, :price).merge(user_id: current_user[:id])
     end
 end
