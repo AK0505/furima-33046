@@ -8,8 +8,12 @@ RSpec.describe UserAddress, type: :model do
   describe '商品購入' do
     context '商品を購入できるとき' do
       it '全て入力されていたら商品を購入できる'do 
-      @user_address = FactoryBot.build(:user_address)
-      expect(@user_address).to be_valid
+        @user_address = FactoryBot.build(:user_address)
+        expect(@user_address).to be_valid
+      end
+      it 'building_name（建物の名前）が空でも商品を購入できる'do 
+        @user_address.building_name =nil
+        expect(@user_address).to be_valid
       end
     end
 
@@ -20,13 +24,25 @@ RSpec.describe UserAddress, type: :model do
         expect(@user_address.errors.full_messages).to include("Token can't be blank")
       end
 
+      it 'user_idが空の時' do
+        @user_address.user_id = nil
+        @user_address.valid?
+        expect(@user_address.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空の時' do
+        @user_address.item_id = nil
+        @user_address.valid?
+        expect(@user_address.errors.full_messages).to include("Item can't be blank")
+      end
+
       it 'postal_code(郵便番号)が空の時' do
         @user_address.postal_code = nil
         @user_address.valid?
         expect(@user_address.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'postal_code(郵便番号)にハイフンが入っていない時' do
-        @user_address.postal_code = 2222222
+        @user_address.postal_code = "2222222"
         @user_address.valid?
         expect(@user_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
       end
@@ -54,7 +70,7 @@ RSpec.describe UserAddress, type: :model do
         expect(@user_address.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_number(電話番号)が正しく入力されていない時' do
-        @user_address.phone_number = 1234
+        @user_address.phone_number = "1234"
         @user_address.valid?
         expect(@user_address.errors.full_messages).to include("Phone number is invalid")
       end
