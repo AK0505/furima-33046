@@ -8,7 +8,6 @@ RSpec.describe UserAddress, type: :model do
   describe '商品購入' do
     context '商品を購入できるとき' do
       it '全て入力されていたら商品を購入できる'do 
-        @user_address = FactoryBot.build(:user_address)
         expect(@user_address).to be_valid
       end
       it 'building_name（建物の名前）が空でも商品を購入できる'do 
