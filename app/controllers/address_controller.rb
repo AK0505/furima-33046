@@ -15,7 +15,6 @@ class AddressController < ApplicationController
   def create
     @user_address = UserAddress.new(address_params)
     @item = Item.find(params[:item_id])
-    binding.pry
     if @user_address.valid?
       pay_item
        @user_address.save
