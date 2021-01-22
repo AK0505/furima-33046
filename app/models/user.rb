@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          
-
+         has_many :contract_historyies,dependent: :destroy
          
          with_options presence: true do
           validates :nickname
