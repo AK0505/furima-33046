@@ -91,6 +91,11 @@ RSpec.describe UserAddress, type: :model do
         @user_address.valid?
         expect(@user_address.errors.full_messages).to include("Phone number is invalid")
       end
+      it 'phone_number(電話番号)が英数字混合で入力された時は登録できない' do
+        @user_address.phone_number = "Aa123456789"
+        @user_address.valid?
+        expect(@user_address.errors.full_messages).to include("Phone number is invalid")
+      end
     end
 
   end
