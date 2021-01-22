@@ -81,6 +81,16 @@ RSpec.describe UserAddress, type: :model do
         @user_address.valid?
         expect(@user_address.errors.full_messages).to include("Phone number is invalid")
       end
+      it 'phone_number(電話番号)が半角数字以外が含まれた時' do
+        @user_address.phone_number = "123-456789"
+        @user_address.valid?
+        expect(@user_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      it 'phone_number(電話番号)が半角数字11桁以上入力された時' do
+        @user_address.phone_number = "123456789123"
+        @user_address.valid?
+        expect(@user_address.errors.full_messages).to include("Phone number is invalid")
+      end
     end
 
   end

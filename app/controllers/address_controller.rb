@@ -9,9 +9,6 @@ class AddressController < ApplicationController
     end
   end
 
-  def new
-    @user_address = UserAddress.new
-  end
 
   def create
     @user_address = UserAddress.new(address_params)
