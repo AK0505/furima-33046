@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!,  except: [:index, :show]
   before_action :set_item,  only: [:edit, :show, :update, :destroy]
+  before_action :basic_auth
 
     def index 
       @items = Item.all.order("created_at DESC")
@@ -57,4 +58,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
   
+
+  def basic_auth
+    authenticate_or_request_with_http_basic do |username, password|
+      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+    end
+  end
 end
