@@ -6,7 +6,7 @@ class UserAddress
   with_options presence: true do
     validates :token
     validates :municipality #市区町村
-    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }#郵便番号
+    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "はハイフン(-)を入れてください" }#郵便番号
     validates :address #住所
     validates :phone_number,format: {with: /\A[0-9]{10,11}+\z/} #電話番号
     validates :user_id
